@@ -1,8 +1,8 @@
 'use client';
 
+import { Box } from '@mui/material';
 import Navigation from './components/Navigation';
 import AuthenticatedLayout from './components/AuthenticatedLayout';
-import PageContainer from '@/app/components/PageContainer';
 
 export default function AuthenticatedLayoutWrapper({
   children,
@@ -12,7 +12,15 @@ export default function AuthenticatedLayoutWrapper({
   return (
     <AuthenticatedLayout>
       <Navigation />
-      <PageContainer>{children}</PageContainer>
+      <Box
+        sx={{
+          width: '100%',
+          height: 'calc(100dvh - 72px)',
+          overflow: 'hidden',
+        }}
+      >
+        {children}
+      </Box>
     </AuthenticatedLayout>
   );
 }
