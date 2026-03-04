@@ -45,4 +45,3 @@ export default function CreditPage(): React.ReactNode {
     </Box>
   );
 }
-
