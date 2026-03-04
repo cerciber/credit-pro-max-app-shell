@@ -30,11 +30,6 @@ export const ROUTES_CONFIG: RouteConfig = {
     ...CLIENT_ROUTES_CONFIG.publicRoutes,
   },
   privateRoutes: {
-    credit: {
-      path: '/credit',
-      label: 'Solcitar credito',
-      roles: ['admin', 'client'],
-    },
     home: {
       path: '/home',
       label: 'Inicio',
@@ -67,8 +62,10 @@ export const API_ROUTES = {
 };
 
 export const DEFAULT_ROUTES: DefaultRouteConfig = {
-  publicRoute: ROUTES_CONFIG.publicRoutes.login,
-  privateRoute: ROUTES_CONFIG.privateRoutes.credit,
+  ...{
+    publicRoute: ROUTES_CONFIG.publicRoutes.login,
+    privateRoute: ROUTES_CONFIG.privateRoutes.home,
+  },
   ...CLIENT_DEFAULT_ROUTES,
 };
 

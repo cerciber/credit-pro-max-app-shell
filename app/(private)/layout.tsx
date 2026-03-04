@@ -1,26 +1,22 @@
 'use client';
 
-import { Box } from '@mui/material';
+import { useSearchParams } from 'next/navigation';
 import Navigation from './components/Navigation';
 import AuthenticatedLayout from './components/AuthenticatedLayout';
+import PageContainer from '@/app/components/PageContainer';
 
 export default function AuthenticatedLayoutWrapper({
   children,
 }: {
   children: React.ReactNode;
 }): React.ReactNode {
+  const searchParams = useSearchParams();
+  const hideNavigation = searchParams.get('nav') === 'false';
+
   return (
     <AuthenticatedLayout>
-      <Navigation />
-      <Box
-        sx={{
-          width: '100%',
-          height: 'calc(100dvh - 72px)',
-          overflow: 'hidden',
-        }}
-      >
-        {children}
-      </Box>
+      {!hideNavigation && <Navigation />}
+      <PageContainer>{children}</PageContainer>
     </AuthenticatedLayout>
   );
 }
